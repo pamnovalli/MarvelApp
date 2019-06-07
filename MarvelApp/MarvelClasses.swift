@@ -22,7 +22,7 @@ struct MarvelData: Codable {
     let limit: Int
     let total: Int
     let count: Int
-    let result: [Hero]
+    let results: [Hero]
 }
 
 struct Hero: Codable {
@@ -30,7 +30,7 @@ struct Hero: Codable {
     let name: String
     let description: String
     let thumbnail: thumbnail
-    let url: [HeroURL]
+    let urls: [HeroURL]
     
 }
 
@@ -38,7 +38,11 @@ struct thumbnail: Codable {
     let path: String
     let ext: String
     
-    enum CodinKeys: String, CodingKey {
+    var url: String {
+        return path + "." + ext
+    }
+    
+    enum CodingKeys: String, CodingKey {
         case path
         case ext = "extension"
         

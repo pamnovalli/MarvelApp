@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tfName: UITextField!
+    @IBOutlet weak var btnBuscar: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,14 +20,18 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        tfName.resignFirstResponder()
-        let vc = segue.destination as! HeroesTableViewController
-        guard let strName = tfName.text else {return}
-        vc.name = strName
+            if let vc = segue.destination as? HeroesTableViewController {
+                guard let name = tfName.text else {return}
+                vc.name = name
+            } else {
+                return
+        }
     }
+    
+    
 }
 

@@ -9,16 +9,23 @@
 import UIKit
 import WebKit
 
-class HeroViewController: UIViewController {
+class HeroViewController: UIViewController{
     
     @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var webView: WKWebView!
-    
+
+    var hero: Hero!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let url = URL(string: hero.urls.first!.url)
+        let request = URLRequest(url: url!)
+        title = hero.name
+        
+        webView.allowsBackForwardNavigationGestures = true
+        webView.navigationDelegate = self as? WKNavigationDelegate
+        webView.load(request)
     }
     
 
@@ -32,4 +39,12 @@ class HeroViewController: UIViewController {
     }
     */
 
+}
+
+extension HeroViewController: WKUIDelegate {
+    
+    func webViewDidClose(_ webView: WKWebView) {
+        loading.stopAnimating()
+    }
+    
 }
