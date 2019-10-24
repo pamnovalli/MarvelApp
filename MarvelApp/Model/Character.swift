@@ -2,7 +2,7 @@
 //  Hero.swift
 //  MarvelApp
 //
-//  Created by felipecardoso on 05/07/19.
+//  Created by Pamela Ianovalli on 24/10/19.
 //  Copyright © 2019 Pamela Ianovalli. All rights reserved.
 //
 
@@ -38,8 +38,6 @@ struct Character: Decodable {
         let description: String = try container.decode(String.self, forKey: .description)
         let thumbnail: Thumbnail = try container.decode(Thumbnail.self, forKey: .thumbnail)
 
-
-        
         self.init(id: id, name: name, description: description, thumbnail: thumbnail)
     }
     

@@ -2,7 +2,7 @@
 //  CharacterInfo.swift
 //  MarvelApp
 //
-//  Created by felipecardoso on 05/07/19.
+//  Created by Pamela Ianovalli on 24/10/19.
 //  Copyright © 2019 Pamela Ianovalli. All rights reserved.
 //
 
