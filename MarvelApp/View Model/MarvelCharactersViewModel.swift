@@ -20,16 +20,17 @@ class MarvelCharactersViewModel {
     
     var heroes: [Character] = []
     var currentPage = 0
+    var name: String = ""
     var total = 0
     var loadingHeroes = false
     let marvelApi = MarvelApi()
     
     var delegate: MarvelCharactersViewModelDelegate?
     
-    func loadHeroes(){
+    func loadHeroesList(){
         loadingHeroes = true
 
-        marvelApi.loadHeroes(page: currentPage) { (info) in
+        marvelApi.loadHeroesList(page: currentPage) { (info) in
                if let info = info {
                    self.heroes += info.data.results
                    self.total = info.data.total
@@ -38,5 +39,15 @@ class MarvelCharactersViewModel {
            }
        }
     
-       
+    func loadHero(name: String){
+    loadingHeroes = true
+
+    marvelApi.loadHero(heroName: name) { (info) in
+           if let info = info {
+               self.heroes += info.data.results
+               self.total = info.data.total
+               self.delegate?.didLoadHeroes()
+           }
+       }
+   }
 }
