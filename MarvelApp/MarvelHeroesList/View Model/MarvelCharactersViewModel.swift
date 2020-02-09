@@ -6,7 +6,6 @@
 //  Copyright © 2019 Pamela Ianovalli. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol MarvelCharactersViewModelDelegate {
@@ -18,7 +17,7 @@ protocol MarvelCharactersViewModelDelegate {
 class MarvelCharactersViewModel {
    
     
-    var heroes: [Character] = []
+    var heroes: [Hero] = []
     var currentPage = 0
     var name: String = ""
     var total = 0

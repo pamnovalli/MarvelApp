@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct CharacterData: Decodable {
+struct HeroData: Decodable {
     let offset: Int
     let limit: Int
     let total: Int
     let count: Int
-    let results: [Character]
+    let results: [Hero]
     
     
     enum CodingKeys: String, CodingKey {
@@ -25,7 +25,7 @@ struct CharacterData: Decodable {
     }
     
     
-    init(offset: Int, limit: Int, total: Int, count: Int, results: [Character]) {
+    init(offset: Int, limit: Int, total: Int, count: Int, results: [Hero]) {
         
         self.offset = offset
         self.limit = limit
@@ -40,7 +40,7 @@ struct CharacterData: Decodable {
         let limit: Int = try container.decode(Int.self, forKey: .limit)
         let total: Int = try container.decode(Int.self, forKey: .total)
         let count: Int = try container.decode(Int.self, forKey: .count)
-        let results: [Character] = try container.decode([Character].self, forKey: .results)
+        let results: [Hero] = try container.decode([Hero].self, forKey: .results)
         
         self.init(offset: offset, limit: limit, total: total, count: count, results: results)
     }
