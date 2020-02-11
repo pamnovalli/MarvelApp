@@ -11,17 +11,17 @@ import Foundation
 struct Stories: Decodable {
     let available: Int
     let collectionURI: String
-    let items: [StoriesItem] 
+    let items: [StoriesItem]
     let returned: Int
     
-    enum CodingKeys: String, CodingKeys {
+    enum CodingKeys: String, CodingKey {
         case available
         case collectionURI
         case items
         case returned
     }
     
-    init(available: Int, collectionURI: String, items: StoriesItem, returned: Int) {
+    init(available: Int, collectionURI: String, items: [StoriesItem], returned: Int) {
         self.available = available
         self.collectionURI = collectionURI
         self.items = items
@@ -32,8 +32,8 @@ struct Stories: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let available: Int = try container.decode(Int.self, forKey: .available)
         let collectionURI: String = try container.decode(String.self, forKey: .collectionURI)
-        let items: StoriesItem = try container.decode(String.self, forKey: .items)
-        let returned: Int = try container.decode(Thumbnail.self, forKey: .returned)
+        let items: [StoriesItem] = try container.decode([StoriesItem].self, forKey: .items)
+        let returned: Int = try container.decode(Int.self, forKey: .returned)
 
         self.init(available: available, collectionURI: collectionURI, items: items, returned: returned)
     }

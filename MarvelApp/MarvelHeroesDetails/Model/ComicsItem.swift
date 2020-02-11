@@ -13,10 +13,10 @@ struct ComicsItem: Decodable {
     let resourceURI: String
     let name: String
     
-    enum CodingKeys: String, CodingKeys {
+    enum CodingKeys: String, CodingKey  {
         case resourceURI
         case name
-       
+        
     }
     
     init(resourceURI: String, name: String) {
@@ -26,9 +26,8 @@ struct ComicsItem: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let resourceURI: String = try container.decode(Int.self, forKey: .resourceURI)
+        let resourceURI: String = try container.decode(String.self, forKey: .resourceURI)
         let name: String = try container.decode(String.self, forKey: .name)
-
         self.init(resourceURI: resourceURI, name: name)
     }
     

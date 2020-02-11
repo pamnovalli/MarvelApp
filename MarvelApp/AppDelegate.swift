@@ -10,15 +10,13 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-
-    var navigationController: UINavigationController = UINavigationController(rootViewController: MarvelHeroesViewController(nibName: "MarvelHeroesViewController", bundle: Bundle.main))
+    
+    private var router: InitialRouter?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        let navigation = UINavigationController()
+        router = InitialRouter(window: UIWindow(frame: UIScreen.main.bounds), navigator: navigation)
+        router?.start()
         return true
     }
 

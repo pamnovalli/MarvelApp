@@ -23,7 +23,6 @@ struct Thumbnail: Decodable {
     }
     
     init(path: String, ext: String) {
-        
         self.path = path
         self.ext = ext
     }

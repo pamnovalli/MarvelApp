@@ -14,7 +14,7 @@ struct StoriesItem: Decodable {
     let type: TypeEnum
     
     
-    enum CodingKeys: String, CodingKeys {
+    enum CodingKeys: String, CodingKey  {
         case resourceURI
         case name
         case type
@@ -28,11 +28,11 @@ struct StoriesItem: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let resourceURI: String = try container.decode(Int.self, forKey: .resourceURI)
+        let resourceURI: String = try container.decode(String.self, forKey: .resourceURI)
         let name: String = try container.decode(String.self, forKey: .name)
-        let type: TypeEnum = try container.decode(String.self, forKey: .type)
-
-        self.init(resourceURI: resourceURI, name: name, items: items)
+        let type: TypeEnum = try container.decode(TypeEnum.self, forKey: .type)
+        
+        self.init(resourceURI: resourceURI, name: name, type: type)
     }
     
     
