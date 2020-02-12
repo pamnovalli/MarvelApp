@@ -8,7 +8,7 @@
 
 import Alamofire
 
-public class ListHeroesService {
+public class HeroesListService {
     
     private var endpoint = Endpoint()
     private var requester = ApiRequester()
@@ -16,12 +16,12 @@ public class ListHeroesService {
     private let limit = 50
     
     
-    func loadHeroes(page: Int = 0, onComplete: @escaping (CharacterInfo?) -> Void) {
+    func loadHeroes(page: Int = 0, onComplete: @escaping (HeroInfo?) -> Void) {
         let offset = page * limit
         let parameters = parameter + "offset=\(offset)&limit=\(limit)&"
         let url = endpoint.createEndpoint(parameters: parameters)
         requester.request(url: url, onComplete: {(response) in
-            guard let data = response.data, let heroesResponse = try? JSONDecoder().decode(CharacterInfo.self, from: data),
+            guard let data = response.data, let heroesResponse = try? JSONDecoder().decode(HeroInfo.self, from: data),
                 heroesResponse.code == 200 else {
                 onComplete(nil)
                 return

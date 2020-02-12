@@ -8,7 +8,6 @@
 
 import Alamofire
 
-
 class ApiRequester {
     
     func request(url: String, onComplete: @escaping (DataResponse<Any>) -> Void) {

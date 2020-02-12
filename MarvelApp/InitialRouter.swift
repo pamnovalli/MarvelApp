@@ -18,7 +18,7 @@ class InitialRouter: Router {
     var navigator: UINavigationController
     var window: UIWindow
     
-    init(window: UIWindow, navigator: UINavigationController) {
+    init(window: UIWindow = UIWindow(frame: UIScreen.main.bounds), navigator: UINavigationController = UINavigationController()) {
         self.window = window
         self.navigator = navigator
     }
@@ -30,6 +30,5 @@ class InitialRouter: Router {
     }
     
 }
-
 
 

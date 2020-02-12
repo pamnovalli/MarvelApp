@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CharacterInfo: Decodable {
+struct HeroInfo: Decodable {
     let code: Int
     let status: String
     let data: HeroData

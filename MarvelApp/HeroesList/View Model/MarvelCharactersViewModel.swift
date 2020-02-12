@@ -19,7 +19,7 @@ class MarvelCharactersViewModel {
     var name: String = ""
     var total = 0
     var loadingHeroes = false
-    let service = ListHeroesService()
+    let service = HeroesListService()
     
     var delegate: MarvelCharactersViewModelDelegate?
     
