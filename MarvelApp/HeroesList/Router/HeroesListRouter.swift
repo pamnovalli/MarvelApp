@@ -9,11 +9,11 @@
 import Foundation
 
 
-protocol HeroListRoutering {
+protocol HeroesListRoutering {
     func navigateToHeroesDetail()
 }
 
-class HeroesListRouter: HeroListRoutering {
+class HeroesListRouter: HeroesListRoutering {
     
     weak var viewController: MarvelHeroesViewController?
     

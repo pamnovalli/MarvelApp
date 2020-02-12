@@ -12,7 +12,7 @@ class MarvelHeroesViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
         
-    let viewModel = MarvelCharactersViewModel()
+    let viewModel = HeroesListViewModel()
     var router: HeroesListRouter?
     
     override func viewDidLoad() {
@@ -52,7 +52,7 @@ extension MarvelHeroesViewController: UITableViewDelegate {
     }
 }
 
-extension MarvelHeroesViewController: MarvelCharactersViewModelDelegate {
+extension MarvelHeroesViewController: HeroesListViewModelDelegate {
     func didLoadHeroes() {
         DispatchQueue.main.async {
             self.viewModel.loadingHeroes = false

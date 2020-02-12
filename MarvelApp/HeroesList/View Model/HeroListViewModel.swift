@@ -8,28 +8,26 @@
 
 import UIKit
 
-protocol MarvelCharactersViewModelDelegate {
+protocol HeroesListViewModelDelegate {
     func didLoadHeroes()
 }
 
 
-class MarvelCharactersViewModel {
+class HeroesListViewModel {
     var heroes: [Hero] = []
-    var currentPage = 0
-    var name: String = ""
     var total = 0
     var loadingHeroes = false
     let service = HeroesListService()
     
-    var delegate: MarvelCharactersViewModelDelegate?
+    var delegate: HeroesListViewModelDelegate?
     
     func loadHeroesList(){
         loadingHeroes = true
 
-        service.loadHeroes(page: currentPage) { (info) in
-            if let info = info {
-                self.heroes += info.data.results
-                self.total = info.data.total
+        service.loadHeroes() { (heroesList) in
+            if let heroesList = heroesList {
+                self.heroes += heroesList.data.results
+                self.total = heroesList.data.total
                 self.delegate?.didLoadHeroes()
             }
             

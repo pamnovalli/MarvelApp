@@ -9,10 +9,20 @@
 import UIKit
 
 class MarvelHeroesDetailViewController: UIViewController {
+    
+    let viewModel = HeroDetailViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewModel.delegate = self
     }
 
+}
+
+extension MarvelHeroesDetailViewController: HeroDetailViewModelProtocol {
+    func didLoadHeroes() {
+        
+    }
+    
+    
 }
