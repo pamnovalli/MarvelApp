@@ -10,10 +10,18 @@ import Alamofire
 
 class ApiRequester {
     
-    func request(url: String, onComplete: @escaping (DataResponse<Any>) -> Void) {
+    func request(url: String, onComplete: @escaping (AFDataResponse<Any>) -> Void) {
         AF.request(url).responseJSON { (response) in
-            print(response)
-            onComplete(response)
+            if let status = response.response?.statusCode {
+                switch (status) {
+                case 200:
+                      onComplete(response)
+                default:
+                    print("error with response status: \(status)")
+                    return
+                }
+            }
+
         }
     }
     
