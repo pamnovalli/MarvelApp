@@ -6,29 +6,29 @@
 //  Copyright © 2020 Pamela Ianovalli. All rights reserved.
 //
 
-import Foundation
-
+import UIKit
 
 protocol HeroDetailViewModelProtocol {
     func didLoadHeroes()
 }
 
 class HeroDetailViewModel {
-    
-    var results: [Result] = []
-    
-    
-     var delegate: HeroDetailViewModelProtocol?
-     let service = HeroDetailService()
+    var result: Result?
+    let service = HeroDetailService()
+    var delegate: HeroDetailViewModelProtocol?
+    var heroId: Int = Int(0.0)
     
     func loadHeroDetail() {
-        
-        service.loadHero { (heroDetails) in
+        service.loadHero(heroId: heroId) { (heroDetails) in
             if let heroDetails = heroDetails {
-                self.results = heroDetails.data.results
+                self.result = heroDetails.data.results.first
+                self.delegate?.didLoadHeroes()
             }
+            
         }
         
     }
     
 }
+
+
