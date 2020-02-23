@@ -9,11 +9,12 @@
 import Foundation
 
 
-protocol HeroesListRoutering {
-    func navigateToHeroesDetail()
+protocol HeroesListCoordinatorProtocol {
+    func navigateToHeroesDetail(selectedHeroId: Int)
 }
 
-class HeroesListRouter: HeroesListRoutering {
+class HeroesListCoordinator: HeroesListCoordinatorProtocol {
+
     
     weak var viewController: MarvelHeroesViewController?
     
@@ -21,8 +22,9 @@ class HeroesListRouter: HeroesListRoutering {
         self.viewController = viewController
     }
     
-    func navigateToHeroesDetail() {
+    func navigateToHeroesDetail(selectedHeroId: Int) {
         let nextViewController = MarvelHeroesDetailViewController(nibName: "MarvelHeroesDetailViewController", bundle: Bundle.main)
+        nextViewController.viewModel.heroId = selectedHeroId
         viewController?.navigationController?.pushViewController(nextViewController, animated: true)
     }
     

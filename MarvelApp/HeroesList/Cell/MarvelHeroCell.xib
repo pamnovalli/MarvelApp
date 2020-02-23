@@ -56,7 +56,7 @@
                 <outlet property="lblName" destination="2Z1-82-A8Q" id="ueI-80-vzA"/>
                 <outlet property="thumbnail" destination="NpN-wl-QQO" id="17J-mI-eo7"/>
             </connections>
-            <point key="canvasLocation" x="-787" y="33"/>
+            <point key="canvasLocation" x="-25" y="65"/>
         </tableViewCell>
     </objects>
 </document>
