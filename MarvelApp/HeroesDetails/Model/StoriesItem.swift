@@ -13,6 +13,10 @@ struct StoriesItem: Decodable {
     let name: String
     let type: TypeEnum
     
+    enum TypeEnum: String, Codable {
+        case cover = "cover"
+        case interiorStory = "interiorStory"
+    }
     
     enum CodingKeys: String, CodingKey  {
         case resourceURI

@@ -12,18 +12,16 @@ protocol HeroesListViewModelDelegate {
     func didLoadHeroes()
 }
 
-
 class HeroesListViewModel {
     var heroes: [Hero] = []
     var total = 0
     var loadingHeroes = false
     let service = HeroesListService()
-    
     var delegate: HeroesListViewModelDelegate?
     
-    func loadHeroesList(){
+    func loadHeroesList() {
         loadingHeroes = true
-
+        
         service.loadHeroes() { (heroesList) in
             if let heroesList = heroesList {
                 self.heroes += heroesList.data.results

@@ -8,26 +8,26 @@
 
 import Alamofire
 
-class HeroDetailService {
+public class HeroDetailService {
     
     private var endpoint = Endpoint()
     private var requester = ApiRequester()
     private let parameter = "characters/"
-    var characterId = 1009154
     
-    
-    func loadHero(onComplete: @escaping (HeroDetail?) -> Void) {
-        let parameters = parameter + "\(characterId)?"
+    func loadHero(heroId: Int, onComplete: @escaping (HeroDetail?) -> Void) {
+        let parameters = parameter + "\(heroId)?"
         let url = endpoint.createEndpoint(parameters: parameters)
         requester.request(url: url, onComplete: {(response) in
+ 
             guard let data = response.data, let heroResponse = try? JSONDecoder().decode(HeroDetail.self, from: data),
-                heroResponse.code == 200 else {
+            heroResponse.code == 200 else {
                     onComplete(nil)
-                    return 
+                    return
             }
             onComplete(heroResponse)
         })
-    
+        
     }
     
 }
+

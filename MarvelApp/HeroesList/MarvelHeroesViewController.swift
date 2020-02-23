@@ -12,22 +12,21 @@ class MarvelHeroesViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
         
-    let viewModel = HeroesListViewModel()
-    var router: HeroesListRouter?
+    private var viewModel = HeroesListViewModel()
+    var coordinator: HeroesListCoordinator?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
         tableView.dataSource = self
         tableView.delegate = self
         title = "Marvel Heroes"
         viewModel.delegate = self
         viewModel.loadHeroesList()
-        router = HeroesListRouter(viewController: self)
-        tableView.register(UINib(nibName: "MarvelHeroes", bundle: nil), forCellReuseIdentifier: "MarvelHeroes")
+        coordinator = HeroesListCoordinator(viewController: self)
+        tableView.register(UINib(nibName: "MarvelHeroCell", bundle: nil), forCellReuseIdentifier: "MarvelHeroCell")
     }
     
 }
-
 
 extension MarvelHeroesViewController: UITableViewDataSource {
     
@@ -36,7 +35,7 @@ extension MarvelHeroesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MarvelHeroes", for: indexPath) as! MarvelHeroes
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MarvelHeroCell", for: indexPath) as! MarvelHeroCell
         let hero = viewModel.heroes[indexPath.row]
         cell.prepareCell(with: hero)
         return cell
@@ -48,7 +47,8 @@ extension MarvelHeroesViewController: UITableViewDataSource {
 extension MarvelHeroesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        router?.navigateToHeroesDetail()
+        let selectedHeroId = viewModel.heroes[indexPath.row].id
+        coordinator?.navigateToHeroesDetail(selectedHeroId: selectedHeroId)
     }
 }
 

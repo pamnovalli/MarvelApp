@@ -52,11 +52,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="lblDescription" destination="mqh-L3-PKj" id="loB-hd-7OR"/>
-                <outlet property="lblName" destination="2Z1-82-A8Q" id="ueI-80-vzA"/>
-                <outlet property="thumbnail" destination="NpN-wl-QQO" id="17J-mI-eo7"/>
+                <outlet property="lblDescription" destination="mqh-L3-PKj" id="zEf-Ar-85V"/>
+                <outlet property="lblName" destination="2Z1-82-A8Q" id="jCE-7d-abv"/>
+                <outlet property="thumbnail" destination="NpN-wl-QQO" id="SAz-sc-IjZ"/>
             </connections>
-            <point key="canvasLocation" x="-25" y="65"/>
+            <point key="canvasLocation" x="-217" y="-5"/>
         </tableViewCell>
     </objects>
 </document>

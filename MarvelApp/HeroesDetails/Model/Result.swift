@@ -10,7 +10,8 @@ import Foundation
 
 struct Result: Decodable {
     let id: Int
-    let name, resultDescription: String
+    let name: String
+    let resultDescription: String
     let modified: Date
     let thumbnail: Thumbnail
     let resourceURI: String
@@ -44,7 +45,8 @@ struct Result: Decodable {
         let id: Int = try container.decode(Int.self, forKey: .id)
         let name: String = try container.decode(String.self, forKey: .name)
         let resultDescription: String = try container.decode(String.self, forKey: .resultDescription)
-        let modified: Date = try container.decode(Date.self, forKey: .modified)
+        let strModified: String = try container.decode(String.self, forKey: .modified)
+        
         let thumbnail: Thumbnail = try container.decode(Thumbnail.self, forKey: .thumbnail)
         let resourceURI: String = try container.decode(String.self, forKey: .resourceURI)
         let comics: Comics = try container.decode(Comics.self, forKey: .comics)
@@ -53,7 +55,24 @@ struct Result: Decodable {
         let events: Comics = try container.decode(Comics.self, forKey: .events)
         let urls: [URLElement] = try container.decode([URLElement].self, forKey: .urls)
         
-        self.init(id: id, name: name, resultDescription : resultDescription, modified: modified, thumbnail: thumbnail, resourceURI: resourceURI, comics: comics, series : series, stories: stories, events: events, urls: urls)
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let modified = (dateFormatter.date(from: strModified) as! Date)
+        
+        self.init(
+            id: id,
+            name: name,
+            resultDescription : resultDescription,
+            modified: modified,
+            thumbnail: thumbnail,
+            resourceURI: resourceURI,
+            comics: comics,
+            series : series,
+            stories: stories,
+            events: events,
+            urls: urls
+        )
     }
     
 }

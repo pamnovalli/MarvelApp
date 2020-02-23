@@ -9,7 +9,11 @@
 import Foundation
 
 struct DataClass: Decodable {
-    let offset, limit, total, count: Int
+    
+    let offset: Int
+    let limit: Int
+    let total: Int
+    let count: Int
     let results: [Result]
 
     enum CodingKeys: String, CodingKey  {
