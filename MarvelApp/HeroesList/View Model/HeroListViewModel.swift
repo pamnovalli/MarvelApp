@@ -13,6 +13,7 @@ protocol HeroesListViewModelDelegate {
 }
 
 class HeroesListViewModel {
+    var currentPage = 0
     var heroes: [Hero] = []
     var total = 0
     var loadingHeroes = false
@@ -23,7 +24,8 @@ class HeroesListViewModel {
     
     func loadHeroesList() {
         loadingHeroes = true
-        service.loadHeroes() { (heroesList) in
+        
+        service.loadHeroes(page: currentPage) { (heroesList) in
             if let heroesList = heroesList {
                 self.heroes += heroesList.data.results
                 self.total = heroesList.data.total

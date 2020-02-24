@@ -64,8 +64,19 @@ extension MarvelHeroesViewController: UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.heroes.count - 10 && !viewModel.loadingHeroes && viewModel.heroes.count != viewModel.total {
+            viewModel.currentPage += 1
+            viewModel.loadHeroesList()
+            if indexPath.row == viewModel.heroes.count - 10 && !viewModel.loadingHeroes && viewModel.heroes.count != viewModel.total {
+                viewModel.currentPage += 1
+                viewModel.loadHeroesList()
+                
+            }
+        }
+    }
+    
 }
-
 
 extension MarvelHeroesViewController: UITableViewDelegate {
     
