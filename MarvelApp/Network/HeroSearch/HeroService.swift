@@ -10,27 +10,24 @@ import Foundation
 
 class HeroService {
     
-    
-    
-//    /    func loadHero(heroName: String, onComplete: @escaping (CharacterInfo?) -> Void) {
-    //
-    //           let url = basePath + "name=\(heroName)&" + getCredentials()
-    //
-    //
-    //           AF.request(url).responseJSON { (response) in
-    //               print(response)
-    //               guard let data = response.data,
-    //                   let marvelResponse = try? JSONDecoder().decode(CharacterInfo.self, from: data),
-    //                   marvelResponse.code == 200
-    //                   else {
-    //                       onComplete(nil)
-    //                   return
-    //               }
-    //               onComplete(marvelResponse)
-    //           }
-    //       }
-    //
-    //
-    //
+//    func loadHero(heroName: String, onComplete: @escaping (CharacterInfo?) -> Void) {
+//
+//        let url = basePath + "name=\(heroName)&" + getCredentials()
+//
+//        AF.request(url).responseJSON { (response) in
+//            print(response)
+//            guard let data = response.data,
+//                let marvelResponse = try? JSONDecoder().decode(CharacterInfo.self, from: data),
+//                marvelResponse.code == 200
+//                else {
+//                    onComplete(nil)
+//                    return
+//            }
+//            onComplete(marvelResponse)
+//        }
+//    }
+//
+
+
     
 }

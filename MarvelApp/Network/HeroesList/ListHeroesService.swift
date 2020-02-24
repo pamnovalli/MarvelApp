@@ -23,12 +23,25 @@ public class HeroesListService {
         requester.request(url: url, onComplete: {(response) in
             guard let data = response.data, let heroesResponse = try? JSONDecoder().decode(HeroInfo.self, from: data),
                 heroesResponse.code == 200 else {
-                onComplete(nil)
-                return
+                    onComplete(nil)
+                    return
             }
-             onComplete(heroesResponse)
+            onComplete(heroesResponse)
         })
-    
     }
-
+    
+    func loadHero(heroName: String, onComplete: @escaping (HeroInfo?) -> Void) {
+        let parameters = parameter + "nameStartsWith=\(heroName)&"
+        let url = endpoint.createEndpoint(parameters: parameters)
+        print(url)
+        requester.request(url: url, onComplete: {(response) in
+            guard let data = response.data, let heroesResponse = try? JSONDecoder().decode(HeroInfo.self, from: data),
+                heroesResponse.code == 200 else {
+                    onComplete(nil)
+                    return
+            }
+            onComplete(heroesResponse)
+        })
+    }
+    
 }
