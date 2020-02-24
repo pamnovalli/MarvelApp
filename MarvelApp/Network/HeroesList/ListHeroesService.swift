@@ -16,7 +16,7 @@ public class HeroesListService {
     private let limit = 50
     
     
-    func loadHeroes(page: Int = 0, onComplete: @escaping (HeroInfo?) -> Void) {
+    func loadHeroes(page: Int, onComplete: @escaping (HeroInfo?) -> Void) {
         let offset = page * limit
         let parameters = parameter + "offset=\(offset)&limit=\(limit)&"
         let url = endpoint.createEndpoint(parameters: parameters)
