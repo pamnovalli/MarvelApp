@@ -1,6 +1,7 @@
 # marvel-app
 
-## Arctiteture
+
+## Architecture
 
 Marvel App was developed using the MVVMC architecture
 
