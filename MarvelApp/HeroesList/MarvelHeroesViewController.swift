@@ -68,11 +68,7 @@ extension MarvelHeroesViewController: UITableViewDataSource {
         if indexPath.row == viewModel.heroes.count - 10 && !viewModel.loadingHeroes && viewModel.heroes.count != viewModel.total {
             viewModel.currentPage += 1
             viewModel.loadHeroesList()
-            if indexPath.row == viewModel.heroes.count - 10 && !viewModel.loadingHeroes && viewModel.heroes.count != viewModel.total {
-                viewModel.currentPage += 1
-                viewModel.loadHeroesList()
-                
-            }
+
         }
     }
     

@@ -18,11 +18,6 @@ class Endpoint {
         return url
     }
     
-    func heroDetailEndpoint(parameters: String) -> String {
-        let url = basePath + parameters + apiKey()
-        return url
-    }
-    
     private func getCredentials() -> String {
         let ts = String(Date().timeIntervalSince1970)
         let hash = MD5(ts+privateKey+publicKey).lowercased()

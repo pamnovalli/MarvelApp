@@ -10,8 +10,8 @@ import Alamofire
 
 public class HeroesListService {
     
-    private var endpoint = Endpoint()
-    private var requester = ApiRequester()
+    private let endpoint = Endpoint()
+    private let requester = ApiRequester()
     private let parameter = "characters?"
     private let limit = 50
     
@@ -35,8 +35,7 @@ public class HeroesListService {
         let url = endpoint.createEndpoint(parameters: parameters)
         print(url)
         requester.request(url: url, onComplete: {(response) in
-            guard let data = response.data, let heroesResponse = try? JSONDecoder().decode(HeroInfo.self, from: data),
-                heroesResponse.code == 200 else {
+            guard let data = response.data, let heroesResponse = try? JSONDecoder().decode(HeroInfo.self, from: data) else {
                     onComplete(nil)
                     return
             }

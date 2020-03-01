@@ -19,8 +19,7 @@ public class HeroDetailService {
         let url = endpoint.createEndpoint(parameters: parameters)
         requester.request(url: url, onComplete: {(response) in
  
-            guard let data = response.data, let heroResponse = try? JSONDecoder().decode(HeroDetail.self, from: data),
-            heroResponse.code == 200 else {
+            guard let data = response.data, let heroResponse = try? JSONDecoder().decode(HeroDetail.self, from: data) else {
                     onComplete(nil)
                     return
             }

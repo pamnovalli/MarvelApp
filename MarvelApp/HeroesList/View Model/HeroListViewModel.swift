@@ -20,7 +20,7 @@ class HeroesListViewModel {
     let service = HeroesListService()
     var delegate: HeroesListViewModelDelegate?
     var filteredHero: [Hero] = []
-   
+
     
     func loadHeroesList() {
         loadingHeroes = true
@@ -36,7 +36,6 @@ class HeroesListViewModel {
     }
     
     func loadHero(searchHero: String) {
-        print(searchHero)
         service.loadHero(heroName: searchHero) { (heroInfo) in
             if let heroInfo = heroInfo {
                 self.filteredHero = heroInfo.data.results
