@@ -2,7 +2,7 @@
 
 ## Architecture
 
-<span style="color:red"> **Marvel App** </span> was developed using the **MVVM-C** architecture
+**Marvel App** was developed using the **MVVM-C** architecture
 
 MVVM-C:
 
@@ -14,8 +14,8 @@ MVVM-C:
 
 ## Dependencies
 
-[Alamofire](https://github.com/Alamofire/Alamofire)->  5.0.0-beta.5 <p>
-[Kingfisher](https://github.com/onevcat/Kingfisher) -> 5.0 <p>
+[Alamofire](https://github.com/Alamofire/Alamofire)  ->  5.0.0-beta.5 <p>
+[Kingfisher](https://github.com/onevcat/Kingfisher)  -> 5.0 <p>
 [SwiftHash](https://github.com/onmyway133/SwiftHash) -> 5.0 <p>
 
 ## Project Features
