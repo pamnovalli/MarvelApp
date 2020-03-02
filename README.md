@@ -2,9 +2,9 @@
 
 ## Architecture
 
-<span style="color:red">some **Marvel App** text</span> was developed using the **MVVMC** architecture
+<span style="color:red"> **Marvel App** </span> was developed using the **MVVM-C** architecture
 
-MVVM:
+MVVM-C:
 
 **M**odel -> Represents data<p>
 **V**iew -> Displays data<p>
