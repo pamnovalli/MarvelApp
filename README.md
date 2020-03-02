@@ -1,16 +1,23 @@
-# marvel-app
-
+# marvel-app :iphone:
 
 ## Architecture
 
-Marvel App was developed using the MVVMC architecture
+<span style="color:red">some **Marvel App** text</span> was developed using the **MVVMC** architecture
 
-<p>M -> Model: Represents data<p>
-<p>V -> View: Displays data<p>
-<p>VM -> ViewModel: Bussiness Logic and Data Binding<p>
-<p>C -> Coordinator: Navigation between screens<p>
+MVVM:
 
+**M**odel -> Represents data<p>
+**V**iew -> Displays data<p>
+**V**iew**M**odel -> Bussiness Logic and Data Binding<p>
+**C**oordinator -> Navigation between screens<p>
+
+
+## Dependencies
+
+[Alamofire](https://github.com/Alamofire/Alamofire)->  5.0.0-beta.5 <p>
+[Kingfisher](https://github.com/onevcat/Kingfisher) -> 5.0 <p>
+[SwiftHash](https://github.com/onmyway133/SwiftHash) -> 5.0 <p>
 
 ## Project Features
 
-**No storyboard**
+**No storyboard** :raised_hands:
