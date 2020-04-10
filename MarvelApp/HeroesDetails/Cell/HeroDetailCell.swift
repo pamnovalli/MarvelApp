@@ -10,9 +10,7 @@ import UIKit
 
 class HeroDetailCell: UITableViewCell {
     
-    
     @IBOutlet weak var lblItemName: UILabel!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -30,7 +30,6 @@ class MarvelHeroesViewController: UIViewController {
         tableView.delegate = self
         title = "Marvel Heroes"
         viewModel.delegate = self
-        viewModel.loadHeroesList()
         coordinator = HeroesListCoordinator(viewController: self)
         tableView.register(UINib(nibName: "MarvelHeroCell", bundle: nil), forCellReuseIdentifier: "MarvelHeroCell")
         searchController.searchResultsUpdater = self as UISearchResultsUpdating
@@ -40,7 +39,14 @@ class MarvelHeroesViewController: UIViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+         viewModel.loadHeroesList()
+    }
+    
 }
+
+
 
 extension MarvelHeroesViewController: UITableViewDataSource {
     
