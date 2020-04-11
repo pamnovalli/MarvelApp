@@ -17,29 +17,22 @@ class HeroesListViewModel {
     var heroes: [Hero] = []
     var total = 0
     var loadingHeroes = false
-    let service = HeroesListService()
+    let service: HeroesListService
     var delegate: HeroesListViewModelDelegate?
     var filteredHero: [Hero] = []
+    
+    init(service: HeroesListService = HeroesListService()) {
+        self.service = service
+    }
 
     
-    func loadHeroesList() {
+    func loadHeroes(searchHero: String?) {
         loadingHeroes = true
-        
-        service.loadHeroes(page: currentPage) { (heroesList) in
-            if let heroesList = heroesList {
-                self.heroes += heroesList.data.results
-                self.total = heroesList.data.total
-                self.delegate?.didLoadHeroes()
-            }
-        }
-        
-    }
-    
-    func loadHero(searchHero: String) {
-        service.loadHero(heroName: searchHero) { (heroInfo) in
-            if let heroInfo = heroInfo {
-                self.filteredHero = heroInfo.data.results
-                self.total = heroInfo.data.total
+        service.page = currentPage
+        service.callService(heroName: searchHero) { (heroes) in
+            if let heroes = heroes {
+                self.heroes += heroes.data.results
+                self.total = heroes.data.total
                 self.delegate?.didLoadHeroes()
             }
         }

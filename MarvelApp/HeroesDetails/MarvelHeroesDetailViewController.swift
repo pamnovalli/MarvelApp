@@ -30,7 +30,6 @@ class MarvelHeroesDetailViewController: UIViewController {
 extension MarvelHeroesDetailViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        //comics and series
         return 2
     }
 

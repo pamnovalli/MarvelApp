@@ -41,7 +41,7 @@ class MarvelHeroesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-         viewModel.loadHeroesList()
+        viewModel.loadHeroes(searchHero: nil)
     }
     
 }
@@ -73,7 +73,7 @@ extension MarvelHeroesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == viewModel.heroes.count - 10 && !viewModel.loadingHeroes && viewModel.heroes.count != viewModel.total {
             viewModel.currentPage += 1
-            viewModel.loadHeroesList()
+            viewModel.loadHeroes(searchHero: nil)
 
         }
     }
@@ -114,11 +114,11 @@ extension MarvelHeroesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let searchHero = searchBar.text!
         if !searchHero.isEmpty && searchHero.count >= 3 {
-            viewModel.loadHero(searchHero: searchHero)
+            viewModel.loadHeroes(searchHero: searchHero)
         }
         tableView.reloadData()
     }
-    
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         tableView.reloadData()
     }

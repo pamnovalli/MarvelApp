@@ -23,9 +23,6 @@ class Endpoint {
         let hash = MD5(ts+privateKey+publicKey).lowercased()
         return "ts=\(ts)&apikey=\(publicKey)&hash=\(hash)"
     }
-    
-    private func apiKey() -> String {
-        return "apikey=\(publicKey)"
-    }
+
     
 }

@@ -14,12 +14,16 @@ protocol HeroDetailViewModelProtocol {
 
 class HeroDetailViewModel {
     var result: Result?
-    let service = HeroDetailService()
+    let service: HeroDetailService
     var delegate: HeroDetailViewModelProtocol?
     var heroId: Int = Int(0.0)
     
+    init(service: HeroDetailService = HeroDetailService()) {
+        self.service = service
+    }
+    
     func loadHeroDetail() {
-        service.loadHero(heroId: heroId) { (heroDetails) in
+        service.callService(heroId: heroId) { (heroDetails) in
             if let heroDetails = heroDetails {
                 self.result = heroDetails.data.results.first
                 self.delegate?.didLoadHeroes()
