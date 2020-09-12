@@ -28,7 +28,4 @@ class InitialRouter: Router {
         window.rootViewController = navigator
         window.makeKeyAndVisible()
     }
-    
 }
-
-
