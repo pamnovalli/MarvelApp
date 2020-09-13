@@ -14,11 +14,12 @@ protocol MarvelHeroesViewControllerDelegate: AnyObject {
 
 final class MarvelHeroesViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
-    private let viewModel = HeroesListViewModel()
+    private let viewModel: HeroesListViewModel
     private var heroes: [Hero] = []
     weak var delegate: MarvelHeroesViewControllerDelegate?
     
-    init() {
+    init(viewModel: HeroesListViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -42,6 +43,8 @@ extension MarvelHeroesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MarvelHeroCell", for: indexPath)
         
+        cell.accessoryType = .disclosureIndicator
+        
         (cell as? MarvelHeroCell)?.prepareCell(with: heroes[indexPath.row])
         
         return cell
@@ -49,6 +52,10 @@ extension MarvelHeroesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         viewModel.willDisplay(indexPath: indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        (cell as? MarvelHeroCell)?.reuse()
     }
 }
 
