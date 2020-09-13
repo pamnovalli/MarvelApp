@@ -23,6 +23,6 @@ MVVM-C:
 
 ## Study content
 
-[Raywenderlich](https://www.raywenderlich.com/158-coordinator-tutorial-for-ios-getting-started)
-[Hackingwithswift](https://www.hackingwithswift.com/articles/71/how-to-use-the-coordinator-pattern-in-ios-apps)
-[khanlou](https://khanlou.com/)
+[Raywenderlich](https://www.raywenderlich.com/158-coordinator-tutorial-for-ios-getting-started) <p>
+[Hackingwithswift](https://www.hackingwithswift.com/articles/71/how-to-use-the-coordinator-pattern-in-ios-apps) <p>
+[khanlou](https://khanlou.com/) <p>
