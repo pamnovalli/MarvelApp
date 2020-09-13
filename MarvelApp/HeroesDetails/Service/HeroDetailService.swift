@@ -8,24 +8,25 @@
 
 import Alamofire
 
-public class HeroDetailService {
-    
+final class HeroDetailService {
     private let apiClient: APIClient
     private let endpoint: Endpoint
     private let parameter = "characters/"
     
-    init(apiClient: APIClient = APIClient(), endpoint: Endpoint = Endpoint()) {
+    init(apiClient: APIClient = APIClient(),
+         endpoint: Endpoint = Endpoint()
+    ) {
         self.apiClient = apiClient
         self.endpoint = endpoint
     }
     
-    func callService(heroId: Int, completionHandler: @escaping (HeroDetail?) -> Void) {
+    func loadHeroDetail(
+        heroId: Int,
+        completionHandler: @escaping (HeroDetail) -> Void
+    ) {
         let url = endpoint.createEndpoint(parameters: parameter + "\(heroId)?")
         apiClient.request(url: url, completionHandler: {  (value: HeroDetail) in
             completionHandler(value)
         })
-        
     }
-    
 }
-
