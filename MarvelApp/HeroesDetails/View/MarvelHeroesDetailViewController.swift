@@ -11,9 +11,12 @@ import UIKit
 final class MarvelHeroesDetailViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     private var indexDetails = ["Comics", "Series"]
-    private let viewModel = HeroDetailViewModel()
+    private var comics: [ComicsItem] = []
+    private var series: [ComicsItem] = []
+    private let viewModel: HeroDetailViewModel
     
-    init() {
+    init(viewModel: HeroDetailViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -25,60 +28,58 @@ final class MarvelHeroesDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.delegate = self
-        viewModel.loadHeroDetail()
+        viewModel.viewDidLoad(delegate: self)
+        
         tableView.register(UINib(nibName: "HeroDetailCell", bundle: nil), forCellReuseIdentifier: "HeroDetailCell")
     }
-    
 }
 
 extension MarvelHeroesDetailViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return indexDetails.count
     }
-
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "\(indexDetails[section])"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return viewModel.result?.comics.items.count ?? 0
-        default:
-            return viewModel.result?.series.items.count ?? 0
+        if section == 0 {
+            return comics.count
+        } else {
+            return series.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HeroDetailCell", for: indexPath) as! HeroDetailCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HeroDetailCell", for: indexPath)
         
-        switch indexPath.section {
-        case 0:
-            if let comicItem = viewModel.result?.comics.items[indexPath.row] {
-                cell.prepareCell(with: comicItem)
-            }
-        default:
-            if let serieItem = viewModel.result?.series.items[indexPath.row] {
-                cell.prepareCell(with: serieItem)
-            }
+        if indexPath.section == 0 {
+            (cell as? HeroDetailCell)?.prepareCell(with: comics[indexPath.row])
+        } else {
+            (cell as? HeroDetailCell)?.prepareCell(with: series[indexPath.row])
         }
         
         return cell
     }
-}
-
-extension MarvelHeroesDetailViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        (cell as? HeroDetailCell)?.reuse()
+    }
 }
 
 extension MarvelHeroesDetailViewController: HeroDetailViewModelProtocol {
-    func didLoadHeroes() {
+    func setComics(_ comics: [ComicsItem]) {
+         self.comics = comics
+    }
+    
+    func setSeries(_ series: [ComicsItem]) {
+        self.series = series
+    }
+    
+    func tableViewReloadData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
 }
-
-
