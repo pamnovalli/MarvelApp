@@ -15,9 +15,14 @@ MVVM-C:
 ## Dependencies
 
 [Alamofire](https://github.com/Alamofire/Alamofire)  ->  5.0.0-beta.5 <p>
-[Kingfisher](https://github.com/onevcat/Kingfisher)  -> 5.0 <p>
 [SwiftHash](https://github.com/onmyway133/SwiftHash) -> 5.0 <p>
 
 ## Project Features
 
 **No storyboard** :raised_hands:
+
+## Study content
+
+[Raywenderlich](https://www.raywenderlich.com/158-coordinator-tutorial-for-ios-getting-started)
+[Hackingwithswift](https://www.hackingwithswift.com/articles/71/how-to-use-the-coordinator-pattern-in-ios-apps)
+[khanlou](https://khanlou.com/)
