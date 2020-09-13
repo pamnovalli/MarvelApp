@@ -10,13 +10,15 @@ import UIKit
 
 final class HeroesListCoordinator: Coordinator {
     private let navigator: UINavigationController
+    private var nextCoordinator: Coordinator?
     
     init(navigator: UINavigationController) {
         self.navigator = navigator
     }
     
     func start() {
-        let viewController = MarvelHeroesViewController()
+        let viewModel = HeroesListViewModel()
+        let viewController = MarvelHeroesViewController(viewModel: viewModel)
         viewController.delegate = self
         navigator.pushViewController(viewController, animated: true)
     }
@@ -25,6 +27,9 @@ final class HeroesListCoordinator: Coordinator {
 extension HeroesListCoordinator: MarvelHeroesViewControllerDelegate {
     func didSelectRowAt(selectedHeroId: Int) {
         let nextCoordinator = HeroDetailCoordinator(navigator: navigator, selectedHeroId: selectedHeroId)
+        
         nextCoordinator.start()
+        
+        self.nextCoordinator = nextCoordinator
     }
 }
