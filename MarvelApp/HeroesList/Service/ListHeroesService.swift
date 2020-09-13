@@ -6,36 +6,41 @@
 //  Copyright © 2019 Pamela Ianovalli. All rights reserved.
 //
 
-import Alamofire
 import UIKit
 
-public class HeroesListService {
-
+final public class HeroesListService {
     private let endpoint: Endpoint
     private let apiClient: APIClient
     private let itensLimit = 50
-    var page: Int = 0
     
-    init(endpoint: Endpoint = Endpoint(), apiClient: APIClient = APIClient()) {
+    init(endpoint: Endpoint = Endpoint(),
+         apiClient: APIClient = APIClient()) {
         self.endpoint = endpoint
         self.apiClient = apiClient
     }
     
-    func createdParameters(heroName: String?) -> String {
-        if heroName != nil {
-            return "characters?" + "nameStartsWith=\(String(describing: heroName))&"
-        } else {
-            let offset = page * 50
-            return "characters?" + "offset=\(offset)&limit=\(itensLimit)&"
-        }
-    }
-    
-    func callService(heroName: String?, completionHandler: @escaping (HeroInfo?) -> Void) {
-        let parameters = createdParameters(heroName: heroName)
+    func loadHeroes(
+        currentPage: Int,
+        completionHandler: @escaping (HeroInfo) -> Void
+    ) {
+        let offset = currentPage * itensLimit
+        let parameters = "characters?" + "offset=\(offset)&limit=\(itensLimit)&"
         let url = endpoint.createEndpoint(parameters: parameters)
-        apiClient.request(url: url) { (value: HeroInfo) in
-            completionHandler(value)
+        
+        apiClient.request(url: url) { (result: HeroInfo) in
+            completionHandler(result)
         }
     }
     
+    func searchHeroes(
+        heroName: String,
+        completionHandler: @escaping (HeroInfo) -> Void
+    ) {
+        let parameters = "characters?" + "nameStartsWith=\(heroName)&"
+        
+        let url = endpoint.createEndpoint(parameters: parameters)
+        apiClient.request(url: url) { (result: HeroInfo) in
+            completionHandler(result)
+        }
+    }
 }
