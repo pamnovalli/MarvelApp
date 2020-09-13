@@ -9,8 +9,11 @@ MVVM-C:
 **M**odel -> Represents data<p>
 **V**iew -> Displays data<p>
 **V**iew**M**odel -> Bussiness Logic and Data Binding<p>
-**C**oordinator -> Navigation between screens<p>
+**C**oordinator -> Responsible for cretate, present and dismiss a UIViewController. Controls the navigation flow of the app.<p>
 
+## Dependence manager
+
+[Cocoa Pods](https://cocoapods.org/) <p>
 
 ## Dependencies
 
