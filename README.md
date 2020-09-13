@@ -7,8 +7,8 @@
 MVVM-C:
 
 **M**odel -> Represents data<p>
-**V**iew -> Displays data<p>
-**V**iew**M**odel -> Bussiness Logic and Data Binding<p>
+**V**iew -> User interface<p>
+**V**iew**M**odel -> Bussiness Logic<p>
 **C**oordinator -> Responsible for cretate, present and dismiss a UIViewController. Controls the navigation flow of the app.<p>
 
 ## Dependence manager
@@ -17,7 +17,7 @@ MVVM-C:
 
 ## Dependencies
 
-[Alamofire](https://github.com/Alamofire/Alamofire)  ->  5.0.0-beta.5 <p>
+[Alamofire](https://github.com/Alamofire/Alamofire)  -> 5.0.0-beta.5 <p>
 [SwiftHash](https://github.com/onmyway133/SwiftHash) -> 5.0 <p>
 
 ## Project Features
