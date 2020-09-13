@@ -9,30 +9,38 @@
 import UIKit
 
 protocol HeroDetailViewModelProtocol {
-    func didLoadHeroes()
+    func setComics(_ comics: [ComicsItem])
+    func setSeries(_ series: [ComicsItem])
+    func tableViewReloadData()
 }
 
 class HeroDetailViewModel {
-    var result: Result?
-    let service: HeroDetailService
-    var delegate: HeroDetailViewModelProtocol?
-    var heroId: Int = Int(0.0)
+    private let service: HeroDetailService
+    private var delegate: HeroDetailViewModelProtocol?
+    private let heroId: Int
     
-    init(service: HeroDetailService = HeroDetailService()) {
+    init(service: HeroDetailService = HeroDetailService(),
+         heroId: Int
+    ) {
         self.service = service
+        self.heroId = heroId
     }
     
-    func loadHeroDetail() {
-        service.callService(heroId: heroId) { (heroDetails) in
-            if let heroDetails = heroDetails {
-                self.result = heroDetails.data.results.first
-                self.delegate?.didLoadHeroes()
-            }
+    func viewDidLoad(delegate: HeroDetailViewModelProtocol) {
+        self.delegate = delegate
+        loadHeroDetail()
+    }
+    
+    private func loadHeroDetail() {
+        service.loadHeroDetail(heroId: heroId) { [weak self] heroDetails in
+            guard let result = heroDetails.data.results.first else { return }
             
+            let comics = result.comics.items
+            let series = result.series.items
+            
+            self?.delegate?.setComics(comics)
+            self?.delegate?.setSeries(series)
+            self?.delegate?.tableViewReloadData()
         }
-        
     }
-    
 }
-
-
