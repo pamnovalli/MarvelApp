@@ -10,14 +10,11 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    private var router: InitialRouter?
+    private var coordinator: InitialCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        router = InitialRouter(window: .init(), navigator: .init())
-        router?.start()
+        coordinator = InitialCoordinator()
+        coordinator?.start()
         return true
     }
-
 }
-

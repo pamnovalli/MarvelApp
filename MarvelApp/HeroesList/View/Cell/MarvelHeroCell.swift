@@ -6,14 +6,12 @@
 //  Copyright © 2020 Pamela Ianovalli. All rights reserved.
 //
 
-
 import UIKit
 
 class MarvelHeroCell: UITableViewCell {
-    @IBOutlet weak var thumbnail: UIImageView!
-    @IBOutlet weak var lblName: UILabel!
-    @IBOutlet weak var lblDescription: UILabel!
-    
+    @IBOutlet private weak var thumbnail: UIImageView!
+    @IBOutlet private weak var lblName: UILabel!
+    @IBOutlet private weak var lblDescription: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,18 +8,23 @@
 
 import UIKit
 
-class MarvelHeroesDetailViewController: UIViewController {
+final class MarvelHeroesDetailViewController: UIViewController {
+    @IBOutlet private weak var tableView: UITableView!
+    private var indexDetails = ["Comics", "Series"]
+    private let viewModel = HeroDetailViewModel()
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    @IBOutlet weak var tableView: UITableView!
-    var indexDetails = ["Comics", "Series"]
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-    let viewModel = HeroDetailViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
+        
         viewModel.delegate = self
         viewModel.loadHeroDetail()
         tableView.register(UINib(nibName: "HeroDetailCell", bundle: nil), forCellReuseIdentifier: "HeroDetailCell")
@@ -30,7 +35,7 @@ class MarvelHeroesDetailViewController: UIViewController {
 extension MarvelHeroesDetailViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return indexDetails.count
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
