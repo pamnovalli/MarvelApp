@@ -15,6 +15,7 @@ protocol Coordinator: AnyObject {
 final class InitialCoordinator: Coordinator {
     private let window: UIWindow
     private let navigator: UINavigationController
+    private var nextCoordinator: Coordinator?
     
     init(window: UIWindow = UIWindow(frame: UIScreen.main.bounds),
          navigator: UINavigationController = UINavigationController()
@@ -28,5 +29,6 @@ final class InitialCoordinator: Coordinator {
         window.makeKeyAndVisible()
         let nextCoordinator = HeroesListCoordinator(navigator: navigator)
         nextCoordinator.start()
+        self.nextCoordinator = nextCoordinator
     }
 }
