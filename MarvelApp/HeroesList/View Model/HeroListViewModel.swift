@@ -22,7 +22,6 @@ final class HeroesListViewModel {
     private var total = 0
     private var heroes: [Hero] = []
     private var filteredHeroes: [Hero] = []
-    private var loadingHeroes = false
     
     init(service: HeroesListService = HeroesListService()) {
         self.service = service
@@ -37,7 +36,7 @@ final class HeroesListViewModel {
     }
     
     func willDisplay(indexPath: Int) {
-        if indexPath == heroes.count - 10 && heroes.count != total && loadingHeroes == false {
+        if indexPath == heroes.count - 10 && heroes.count != total {
             currentPage += 1
             
             loadHeroes()
@@ -58,28 +57,22 @@ final class HeroesListViewModel {
     }
     
     private func loadHeroes() {
-        loadingHeroes.toggle()
-        
         service.loadHeroes(currentPage: currentPage) { [weak self] heroInfo in
             let heroesData = heroInfo.data
             
             self?.total = heroesData.total
             self?.heroes += heroesData.results
             self?.delegate?.setHeroes(heroes: self?.heroes ?? [])
-            self?.loadingHeroes.toggle()
             self?.delegate?.tableViewReloadData()
         }
     }
     
     private func searchHeroes(heroName: String) {
-        loadingHeroes.toggle()
-
         service.searchHeroes(heroName: heroName) { [weak self] heroInfo in
             let heroesData = heroInfo.data
             
             self?.filteredHeroes = heroesData.results
             self?.delegate?.setHeroes(heroes: self?.filteredHeroes ?? [])
-            self?.loadingHeroes.toggle()
             self?.delegate?.tableViewReloadData()
         }
     }
