@@ -9,11 +9,11 @@
 import UIKit
 
 final class HeroDetailCoordinator: Coordinator {
-    private let navigator: UINavigationController
+    private let navigator: NavigationController
     private var viewController: UIViewController?
     private let selectedHeroId: Int
     
-    init(navigator: UINavigationController,
+    init(navigator: NavigationController,
          selectedHeroId: Int
     ) {
         self.navigator = navigator

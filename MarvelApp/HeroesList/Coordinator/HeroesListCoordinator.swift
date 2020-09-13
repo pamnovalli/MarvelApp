@@ -9,10 +9,10 @@
 import UIKit
 
 final class HeroesListCoordinator: Coordinator {
-    private let navigator: UINavigationController
+    private let navigator: NavigationController
     private var nextCoordinator: Coordinator?
     
-    init(navigator: UINavigationController) {
+    init(navigator: NavigationController) {
         self.navigator = navigator
     }
     

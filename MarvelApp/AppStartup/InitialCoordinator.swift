@@ -14,11 +14,11 @@ protocol Coordinator: AnyObject {
 
 final class InitialCoordinator: Coordinator {
     private let window: UIWindow
-    private let navigator: UINavigationController
+    private let navigator: NavigationController
     private var nextCoordinator: Coordinator?
     
     init(window: UIWindow = UIWindow(frame: UIScreen.main.bounds),
-         navigator: UINavigationController = UINavigationController()
+         navigator: NavigationController = NavigationController()
     ) {
         self.window = window
         self.navigator = navigator
@@ -27,6 +27,8 @@ final class InitialCoordinator: Coordinator {
     func start() {
         window.rootViewController = navigator
         window.makeKeyAndVisible()
+        navigator.navigationBar.prefersLargeTitles = true
+        navigator.setupNavigation()
         let nextCoordinator = HeroesListCoordinator(navigator: navigator)
         nextCoordinator.start()
         self.nextCoordinator = nextCoordinator

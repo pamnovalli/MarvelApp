@@ -61,7 +61,7 @@ final class HeroesListViewModel {
             let heroesData = heroInfo.data
             
             self?.total = heroesData.total
-            self?.heroes += heroesData.results
+            self?.heroes.append(contentsOf: heroesData.results)
             self?.delegate?.setHeroes(heroes: self?.heroes ?? [])
             self?.delegate?.tableViewReloadData()
         }
