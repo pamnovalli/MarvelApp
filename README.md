@@ -1,5 +1,7 @@
 # marvel-app :iphone:
 
+<img src="app.gif" width="40%">
+
 ## Architecture
 
 **Marvel App** was developed using the **MVVM-C** architecture
