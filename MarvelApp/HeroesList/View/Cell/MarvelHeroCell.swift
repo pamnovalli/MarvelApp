@@ -8,23 +8,25 @@
 
 import UIKit
 
-class MarvelHeroCell: UITableViewCell {
-    @IBOutlet private weak var thumbnail: UIImageView!
+final class MarvelHeroCell: UITableViewCell {
+    @IBOutlet private weak var heroImage: UIImageView!
     @IBOutlet private weak var lblName: UILabel!
     @IBOutlet private weak var lblDescription: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
     
     func prepareCell(with hero: Hero) {
         lblName.text = hero.name
         lblDescription.text = hero.description
-        if let url = URL(string: hero.thumbnail.url) {
-            thumbnail.load(url: url)
-        } else {
-            thumbnail.image = nil
-        }
-        thumbnail.layer.cornerRadius = thumbnail.frame.size.height/2
+        
+        guard let url = URL(string: hero.thumbnail.url) else { return }
+        
+        heroImage.load(url: url)
+        
+        heroImage.layer.cornerRadius = heroImage.frame.size.height/2
+    }
+    
+    func reuse() {
+        heroImage.image = nil
+        lblName.text = nil
+        lblDescription.text = nil
     }
 }
