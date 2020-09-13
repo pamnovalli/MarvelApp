@@ -21,8 +21,8 @@ final class HeroDetailCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = MarvelHeroesDetailViewController()
-        viewController
+        let viewModel = HeroDetailViewModel(heroId: selectedHeroId)
+        let viewController = MarvelHeroesDetailViewController(viewModel: viewModel)
         navigator.pushViewController(viewController, animated: true)
         
         self.viewController = viewController
