@@ -28,6 +28,8 @@ MVVM-C:
 
 ## Study content
 
-[Raywenderlich](https://www.raywenderlich.com/158-coordinator-tutorial-for-ios-getting-started) <p>
-[Hackingwithswift](https://www.hackingwithswift.com/articles/71/how-to-use-the-coordinator-pattern-in-ios-apps) <p>
-[khanlou](https://khanlou.com/) <p>
+[Coordinator tutorial by Raywenderlich](https://www.raywenderlich.com/158-coordinator-tutorial-for-ios-getting-started) <p>
+[MVVM tutorials by Raywenderlich](https://www.raywenderlich.com/34-design-patterns-by-tutorials-mvvm) <p>
+[Coordinator Pattern by Hackingwithswift](https://www.hackingwithswift.com/articles/71/how-to-use-the-coordinator-pattern-in-ios-apps) <p>
+[Creator of the Cordinator pattern @khanlou](https://khanlou.com/) <p>
+[What is MVVM?](https://www.hackingwithswift.com/example-code/language/what-is-mvvm)
