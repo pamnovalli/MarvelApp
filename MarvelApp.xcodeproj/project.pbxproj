@@ -141,6 +141,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B35349CD2510476F00F5B5DF /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				B35349CA251032C100F5B5DF /* SpinnerViewController.swift */,
+			);
+			path = "UI Components";
+			sourceTree = "<group>";
+		};
 		B36997FC250EAC0700B30830 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +306,7 @@
 		E19F652122A944AC006D6AEC /* MarvelApp */ = {
 			isa = PBXGroup;
 			children = (
+				B35349CD2510476F00F5B5DF /* UI Components */,
 				FACD584A22CFF377002A20CF /* HeroesList */,
 				B39D0B6F23F0A88D00C49D70 /* HeroesDetails */,
 				FACD585C22D019DE002A20CF /* Network */,
@@ -305,7 +314,6 @@
 				B39D0B6B23F08B9600C49D70 /* Resources */,
 				B36A469B250E981F0071F5FE /* AppStartup */,
 				E19F652E22A944AE006D6AEC /* Info.plist */,
-				B35349CA251032C100F5B5DF /* SpinnerViewController.swift */,
 			);
 			path = MarvelApp;
 			sourceTree = "<group>";
