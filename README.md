@@ -10,7 +10,7 @@ MVVM-C:
 
 **M**odel -> Represents data<p>
 **V**iew -> User interface<p>
-**V**iew**M**odel -> Bussiness Logic<p>
+**V**iew**M**odel -> Data preparation to be showed in view and bussiness Logic<p>
 **C**oordinator -> Responsible for cretate, present and dismiss a UIViewController. Controls the navigation flow of the app.<p>
 
 ## Dependence manager
@@ -26,7 +26,7 @@ MVVM-C:
 
 **No storyboard** :raised_hands:
 
-## Study content
+## Articles used during development
 
 [Coordinator tutorial by Raywenderlich](https://www.raywenderlich.com/158-coordinator-tutorial-for-ios-getting-started) <p>
 [MVVM tutorials by Raywenderlich](https://www.raywenderlich.com/34-design-patterns-by-tutorials-mvvm) <p>
