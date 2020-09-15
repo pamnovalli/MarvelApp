@@ -19,7 +19,16 @@ final class MarvelHeroCell: UITableViewCell {
         
         guard let url = URL(string: hero.thumbnail.url) else { return }
         
-        heroImage.load(url: url)
+        let loader = Loader()
+        heroImage.addSubview(loader)
+        loader.setup(in: heroImage)
+        
+        ImageCache.load(url: url) { image in
+            DispatchQueue.main.async {
+                self.heroImage.image = image
+                loader.removeFromSuperview()
+            }
+        }
         
         heroImage.layer.cornerRadius = heroImage.frame.size.height/2
     }
